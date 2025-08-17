@@ -192,7 +192,7 @@ func (ui *UI) redraw() {
 		closedConnections)
 
 	ui.frame.AddText("👀 [white::b]tcpwatch", true, tview.AlignLeft, tcell.ColorWhite)
-	ui.frame.AddText("v0.1.0 @lukejoshuapark", true, tview.AlignLeft, tcell.ColorGrey)
+	ui.frame.AddText("v0.1.1 @lukejoshuapark", true, tview.AlignLeft, tcell.ColorGrey)
 	ui.frame.AddText(fmt.Sprintf("Port %v 👂", ui.localPort), true, tview.AlignRight, tcell.ColorWhite)
 	ui.frame.AddText(fmt.Sprintf("%v:%v 🌐", ui.remoteHost, ui.remotePort), true, tview.AlignRight, tcell.ColorWhite)
 	ui.frame.AddText("Next Conn. <CTRL-E>    Previous Conn. <CTRL-Q>    Quit <CTRL+C>", false, tview.AlignLeft, tcell.ColorGrey)

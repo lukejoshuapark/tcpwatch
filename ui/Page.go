@@ -195,17 +195,18 @@ func getCapitalizedSpacedHex(data []byte) string {
 }
 
 func formatBytes(bytes uint64) string {
-	if bytes < 1024 {
-		return fmt.Sprintf("%v B", float64(bytes))
+	suffixes := []string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
+	value := float64(bytes)
+	ind := 0
+
+	for value >= 1024 && ind < len(suffixes)-1 {
+		value /= 1024
+		ind++
 	}
 
-	if bytes < 1024*1024 {
-		return fmt.Sprintf("%.2f KB", float64(bytes)/1024)
+	if ind == 0 {
+		return fmt.Sprintf("%v %s", uint64(value), suffixes[ind])
 	}
 
-	if bytes < 1024*1024*1024 {
-		return fmt.Sprintf("%.2f MB", float64(bytes)/1024)
-	}
-
-	return fmt.Sprintf("%.2f GB", float64(bytes)/1024)
+	return fmt.Sprintf("%.2f %s", value, suffixes[ind])
 }
